@@ -30,8 +30,17 @@ yarn-error.*
 .DS_Store
 *.pem
 
-# local env files
-.env*.local
+# Environment and secrets
+.env
+.env.*
+!.env.example
+
+# Dependencies and generated files
+**/node_modules/
+**/.expo/
+**/.venv/
+**/__pycache__/
+.DS_Store
 
 # typescript
 *.tsbuildinfo
