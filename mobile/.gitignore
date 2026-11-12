@@ -28,6 +28,7 @@ yarn-error.*
 
 # macOS
 .DS_Store
+**/.DS_Store
 *.pem
 
 # Environment and secrets
@@ -48,3 +49,14 @@ yarn-error.*
 # generated native folders
 /ios
 /android
+
+# Local files
+.DS_Store
+*.log
+*.sqlite3
+
+# Python
+.venv/
+venv/
+__pycache__/
+*.pyc

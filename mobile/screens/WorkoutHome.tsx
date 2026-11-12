@@ -16,6 +16,7 @@ import WorkoutDetails from './WorkoutDetails';
 import WorkoutHistory from './WorkoutHistory';
 import WorkoutPlanner from './WorkoutPlanner';
 import ProgressScreen from './ProgressScreen';
+import ImportWorkout from './ImportWorkout';
 
 type Workout = {
   id: string;
@@ -41,6 +42,7 @@ export default function WorkoutHome({
   const [showHistory, setShowHistory] = useState(false);
   const [showPlanner, setShowPlanner] = useState(false);
   const [showProgress, setShowProgress] = useState(false);
+  const [showImport, setShowImport] = useState(false);
 
   const loadWorkouts = useCallback(async () => {
     setLoading(true);
@@ -138,6 +140,20 @@ if (showProgress) {
   );
 }
 
+
+if (showImport) {
+  return (
+    <ImportWorkout
+      onBack={() => setShowImport(false)}
+      onSaved={() => {
+        setShowImport(false);
+        void loadWorkouts();
+      }}
+    />
+  );
+}
+
+
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.content}>
@@ -178,6 +194,17 @@ if (showProgress) {
                 📈 My Progress
             </Text>
             </TouchableOpacity>
+
+
+        <TouchableOpacity
+          style={styles.historyButton}
+          onPress={() => setShowImport(true)}
+        >
+          <Text style={styles.historyButtonText}>
+            ✨ Import a Workout
+          </Text>
+        </TouchableOpacity>
+
 
         <View style={styles.form}>
           <Text style={styles.formTitle}>
